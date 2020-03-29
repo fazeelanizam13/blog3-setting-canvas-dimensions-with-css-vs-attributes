@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Blog Snippets</title>
+    <head>
+      <style>
+        body{
+          margin: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center
+        }
+        #box-canvas-css, #box-canvas-attr{
+          width: 90%;
+          height: 10%;
+        }
+      </style>
+    </head>
+  </head>
+  
+  <body>
+    <div id="box-canvas-css">
+      <p>Canvas with width and height set with CSS (Inner borders are blurred)</p>
+      <canvas id="canvas-css"></canvas>
+    </div>
+    <div id="box-canvas-attr">
+      <p>Canvas with width and height set with default attributes (Inner borders are sharp)</p>
+      <canvas id="canvas-attr"></canvas>
+    </div>
+    
+    <script type="text/javascript">
+      let canvasCSS = document.getElementById('canvas-css');
+      let canvasATTR = document.getElementById('canvas-attr');
+      
+      canvasCSS.style.width = document.getElementById('box-canvas-css').offsetWidth;
+      canvasCSS.style.height = document.getElementById('box-canvas-css').offsetHeight;
+      
+      canvasATTR.width = document.getElementById('box-canvas-attr').offsetWidth;
+      canvasATTR.height = document.getElementById('box-canvas-attr').offsetHeight;
+      
+      let colors = ['rgb(136, 0, 68)', 'rgb(230, 0, 115)', 'rgb(255, 91, 173)', 'rgb(255, 183, 219)'];
+      
+      function draw(canvas, colors){
+        let context = canvas.getContext('2d');
+        
+        for(let i=0; i < 4; i++){
+          context.fillStyle = colors[i];
+          context.fillRect((i*.25*canvas.width), 0, (.25*canvas.width), canvas.height);
+        }
+      }
+      
+      draw(canvasCSS, colors);
+      draw(canvasATTR, colors);
+    </script>
+  </body>
+</html>
